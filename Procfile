@@ -1,1 +1,1 @@
-web: gunicorn mysterious-shore-87001.wsgi --log-file -
+web: gunicorn locallibrary.wsgi --log-file -
