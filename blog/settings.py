@@ -228,8 +228,3 @@ CKEDITOR_CONFIGS = {
         "codeSnippet_theme": "xcode",
     },
 }
-
-import dj-database-url
-
-db_from_env = dj-database-url.config()
-DATABASE['default'].update(db_from_env)
