@@ -27,9 +27,9 @@ SECRET_KEY = ')qe&s-s4acn$mfghiox%n&j5!me%0if(&pw6gaun0auk_^os#e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-STATIC_ROOT = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'  
 
 # Application definition
@@ -228,3 +228,8 @@ CKEDITOR_CONFIGS = {
         "codeSnippet_theme": "xcode",
     },
 }
+
+import dj-database-url
+
+db_from_env = dj-database-url.config()
+DATABASE['default'].update(db_from_env)
