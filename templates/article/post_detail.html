@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% block body %}
+<div>
+    <div>
+    {% autoescape off %} 
+        <h1>Title: {{post.title}}</h1>
+        {{post.body}}
+        <p>Author: {{post.author}}</p>
+    {% endautoescape %}
+    </div>
+</div>
+{% endblock body %}

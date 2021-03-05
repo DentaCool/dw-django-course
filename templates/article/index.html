@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div>
+        {% for post in post_list%}
+        <div class="brd">
+        <h1>{{post.title}}</h1>
+        <p><h4>Author: {{post.author}} </h4></p>
+
+        {% autoescape off %} 
+        <p>{{post.body}}</p>
+        {% endautoescape %}
+        Created: {{post.created}}
+        <a href="{% url 'post_detail' post.slug%}">Read more</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
+
+
