@@ -61,6 +61,7 @@ class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        default_related_name = "comments"
         ordering = ("created",)
 
     def __str__(self):

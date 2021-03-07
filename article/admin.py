@@ -43,6 +43,5 @@ class PostAdminModel(admin.ModelAdmin):
 class CommentAdminModel(admin.ModelAdmin):
     list_display = ("author_comment", "post", "created")
     
-    
     ordering = ("-created",)
-    list_filter = ("created", )
+    list_filter = ("created", "author_comment",)

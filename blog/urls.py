@@ -16,9 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from rest_framework import routers
+from article.views import UserViewSet, PostViewSet
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'posts', PostViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("article.urls"), name="article"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('api/', include(router.urls))
 ]
+
+
+urlpatterns += router.urls

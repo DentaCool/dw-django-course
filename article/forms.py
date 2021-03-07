@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 from django import forms
-
+from article.models import Comment 
 from ckeditor.fields import RichTextFormField
 from ckeditor_uploader.fields import RichTextUploadingFormField
 
@@ -15,4 +15,4 @@ class CkEditorForm(forms.Form):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('author_comment', 'created', 'body')
+        fields = ('author_comment', 'body',)
