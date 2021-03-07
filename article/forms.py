@@ -11,3 +11,8 @@ class CkEditorForm(forms.Form):
     ckeditor_upload_example = RichTextUploadingFormField(
         config_name="my-custom-toolbar"
     )
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('author_comment', 'created', 'body')
