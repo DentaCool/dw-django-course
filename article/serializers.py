@@ -5,11 +5,16 @@ from article import models as article_models
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('id', 'first_name', 'last_name', 'email')
-
+		
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = article_models.Comment
+        fields = ('id', 'author_comment', 'body')
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = article_models.Post
-        fields = ('author', 'title', 'body', 'status', 'slug', 'created', 'updated')
+        fields = ('author', 'title', 'body', 'status', 'slug', 'created', 'updated', 'likes')
+        comments = CommentSerializer(many=True)
+
 
