@@ -1,1 +1,4 @@
-requirements.txt found, instead of Pipfile! Converting…
+
+django-extensions==3.1.1
+djangorestframework==3.12.2
+drf-extensions==0.7.0

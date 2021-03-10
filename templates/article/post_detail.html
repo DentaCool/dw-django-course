@@ -1,34 +1,43 @@
 {% extends 'base.html' %}
 {% block body %}
 <div class="container">
-    <div class="post-brd">
-        {% autoescape off %}
-        <h4>{{post.title}}</h4>
-        {{post.body}}
-        <p><h5>Author: {{post.author}}</h5></p>
-        {% endautoescape %}
-    </div>
-
-
-        <div class="card-stacked">
-            {% for comment in post.comments.all%}
-            <div class="card-panel grey ">
-                <h5 ><i class="material-icons ">account_circle</i>{{comment.author}}</h5>
-                <div class="card">
-                    <div class="card-stacked ">
-                        <div class="card-content flow-text grey lighten-4 ">
-                            {% autoescape off %}
-                            <p>{{comment.body}}</p>
-                            {% endautoescape %}
-                        </div>
-                        
-                <h2 class="header h5 right-align">{{comment.created}}</h2>
-                    </div>
-                </div>
+   <div class="post-brd">
+      {% autoescape off %}
+      <h4>{{post.title}}</h4>
+      {{post.body}}
+      <p>
+      <h5>Author: {{post.author}} </h5>
+      </p>
+      {% endautoescape %}
+   </div>
+   <button  id="likes-count" class="btn waves-effect waves-light" type="submit" name="action">Like {{post.likes.count}}
+  </button> 
+   <div class="card-panel grey ">
+      <div class="form-wrapper">
+         <form>
+            <input id="author" type="author" placeholder="author" ><br>
+            <textarea id="body" type="body" placeholder="body" rows="10" cols="40"></textarea> <br>
+            <input id="post_id" type="hidden" value={{ post.id }}>
+            <button  type="submit">Send</button>
+         </form>
+      </div>
+   </div>
+   <div class="card-stacked">
+      {% for comment in post.comments.all.reverse%}
+      <div class="card-panel grey ">
+         <h5><i class="material-icons ">account_circle</i>{{comment.author_comment}}</h5>
+         <div class="card">
+            <div class="card-stacked ">
+               <div class="card-content flow-text grey lighten-4 ">
+                  {% autoescape off %}
+                  <p>{{comment.body}}</p>
+                  {% endautoescape %}
+               </div>
+               <h2 class="header h5 right-align">{{comment.created}}</h2>
             </div>
-
-            {% endfor %}
-        </div>
-
+         </div>
+      </div>
+      {% endfor %}
+   </div>
 </div>
 {% endblock body %}
