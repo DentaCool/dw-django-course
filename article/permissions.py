@@ -19,15 +19,19 @@ class UserPermission(BasePermission):
 
 class PostPermission(BasePermission):
     def has_permission(self, request, view):
+        print('PostPermission')
         if request.method in SAFE_METHODS:
             return True
         else:
+            print(IsAuthenticated().has_permission(request, view))
             return IsAuthenticated().has_permission(request, view)
 
     def has_object_permission(self, request, view, obj):
+        print('PostPermission')
         if request.method in SAFE_METHODS:
             return True
         else:
+            print('i work')
             return request.user == obj.author
 
 

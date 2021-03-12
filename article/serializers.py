@@ -15,7 +15,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = article_models.Comment
-        fields = ("id", "post_id", "author_comment", "body",)
+        fields = ("id", "post_id", "author_comment", "body", "created")
 
 class PostListSerializer(serializers.ModelSerializer):
     author = account_serializers.UserSerializer(read_only=True)

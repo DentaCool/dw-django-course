@@ -1,4 +1,4 @@
-#!/home/denta/Datawiz/3.03.2021/Blog/.venv/bin/python3
+#!/home/denta/3.03.2021/Blog/.venv/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

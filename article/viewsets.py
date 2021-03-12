@@ -2,11 +2,12 @@
 from rest_framework import viewsets
 from django.db.models import Count
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.mixins import CreateModelMixin
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework_extensions.routers import ExtendedSimpleRouter
 from rest_framework_extensions.mixins import NestedViewSetMixin
 
@@ -30,18 +31,20 @@ class PostModelViewSet(BaseModelViewSet):
     filterset_class = PostFilter
     permission_classes = [PostPermission]
 
+
     @action(
         methods=["get"],
         detail=False,
         url_name="current",
         url_path="current",
-        permission_classes=[IsAuthenticated]
+        permission_classes=[IsAuthenticatedOrReadOnly]
     )
     def current(self, request, *args, **kwargs) -> Response:
         serializer = self.get_serializer(instance=request.user)
         return Response(serializer.data)
 
 
+    @csrf_exempt
     @action(methods=["post"], detail=True, url_path="like", permission_classes=[AllowAny])
     def like(self, request, *args, **kwargs):
         post = self.get_object()
