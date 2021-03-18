@@ -16,25 +16,20 @@
 
   <title>Datawiz Django Course</title>
 </head>
-<style>body{
-  background-color: #22325357; /* Цвет фона веб-страницы */
- } 
-  .post-brd {
-    border: 4px double black;
-    background: #EEDFAC;
-    padding: 10px;
-  }
+<style>
 
 </style>
 
 <body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a  class="navbar-brand mb-0 h1" href="/">My Cool Blog</a>
+  </nav>
   {% csrf_token %}
   {% block body%}
   {% endblock body%}
   
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-  <script src="{% static '/js/s.js' %}" defer></script>
   
 </body>
 

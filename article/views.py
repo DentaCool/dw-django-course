@@ -22,7 +22,6 @@ ckeditor_form_view = CkEditorFormView.as_view()
 # Create your views here.
 
 
-# view
 class PostDetailView(DetailView):
 
     form_class = forms.CkEditorForm
@@ -33,5 +32,3 @@ class PostDetailView(DetailView):
 class PostListView(ListView):
     queryset = Post.objects.draft()
     template_name = "article/index.html"
-    
-# API

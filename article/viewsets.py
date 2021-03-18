@@ -2,8 +2,6 @@
 from rest_framework import viewsets
 from django.db.models import Count
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_exempt
-
 from rest_framework.mixins import CreateModelMixin
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -44,7 +42,7 @@ class PostModelViewSet(BaseModelViewSet):
         return Response(serializer.data)
 
 
-    @csrf_exempt
+
     @action(methods=["post"], detail=True, url_path="like", permission_classes=[AllowAny])
     def like(self, request, *args, **kwargs):
         post = self.get_object()

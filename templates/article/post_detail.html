@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 {% block body %}
+{% load static %}
+<style>
+   body {
+       font-family: "Roboto", sans-serif;
+       font-size: 18px;
+       background-color: #fdfdfd;
+   }
+   
+   .head_text {
+       color: white;
+   }
+   
+   .card {
+       box-shadow: 0 16px 48px #E3E7EB;
+   }
+</style>
+
+<script src="{% static '/js/s.js' %}" defer></script>
 <div class="container">
    <div class="card">
       <div class="card-body">
@@ -13,25 +31,26 @@
       <h6 class="card-subtitle mb-2 text-muted">Author: {{post.author}} </h6>
    </div>
    </div>
+   <button  id="likes-count" class="btn btn-danger bg-dark" type="submit" name="action">Like {{post.likes.count}}</button> 
+   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Comment</a>
 
-
-   <button  id="likes-count" class="btn btn-danger" type="submit" name="action">Like {{post.likes.count}}</button> 
-   <button id="comment" class="btn btn-primary">Comment</button>
+    <div class="collapse" id="collapseExample">
+      <div class="card p-1" id="comment-form">
+         <form id="comment-form">
+            <div class="form-group">
+            <label >Author</label>
+            <input id="author" type="author"class="form-control">
+            </div>
+            <div class="form-group">
+            <label>Body</label>
+            <textarea class="form-control" id="body"> </textarea>
+            </div>
+            <input id="post_id" type="hidden" value={{ post.id }}>
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      </div>
+    </div>
    
-   <div class="card d-none" id="comment-form">
-      <form>
-         <div class="form-group">
-         <label >Author</label>
-         <input id="author" type="author"class="form-control">
-         </div>
-         <div class="form-group">
-         <label>Body</label>
-         <textarea class="form-control" id="body"> </textarea>
-         </div>
-         <input id="post_id" type="hidden" value={{ post.id }}>
-         <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-   </div>
 
 
 <div id="comments">
@@ -55,7 +74,7 @@
    -->
 </div>
 
-<div><a class="btn btn-info" id="lazy-comments" href="javascript:void(0);" data-page="2">Load More Posts</a></div>
+<!-- <div><a class="btn btn-info" id="lazy-comments" href="javascript:void(0);" data-page="2">Load More Posts</a></div> -->
 
 </div>
 {% endblock body %}
